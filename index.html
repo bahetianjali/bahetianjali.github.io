@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Anjali Baheti · A map I am building in public</title>
+<meta name="description" content="Backend and AI engineer. Four connected pieces of public work on markets, builders, and the gap between what data says and what people actually do." />
+<meta property="og:title" content="Anjali Baheti" />
+<meta property="og:description" content="A map I am building in public. Come think with me." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://anjalibaheti.com/" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#16140F;
+    --paper:#F8F5EE;
+    --panel:#FFFFFF;
+    --panel-2:#F1ECDF;
+    --muted:#6E685A;
+    --line:rgba(22,20,15,0.12);
+    --lime:#A8CC28;
+    --teal:#1A8A7A;
+    --teal-deep:#0F6E56;
+    --blue:#2A5FAA;
+    --display:"Space Grotesk",system-ui,sans-serif;
+    --accent:"Fraunces",Georgia,serif;
+    --body:"DM Sans",system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:18px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .em{font-family:var(--accent);font-style:italic;font-weight:500;color:var(--teal);}
+
+  /* nav */
+  nav{
+    position:sticky;top:0;z-index:20;
+    background:rgba(248,245,238,0.86);
+    backdrop-filter:saturate(140%) blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;max-width:980px;margin:0 auto;}
+  .mono-logo{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-0.01em;}
+  .mono-logo span{color:var(--lime);}
+  .nav-links{display:flex;gap:26px;font-family:var(--mono);font-size:12.5px;letter-spacing:0.06em;text-transform:uppercase;}
+  .nav-links a{color:var(--muted);text-decoration:none;transition:color .2s;}
+  .nav-links a:hover{color:var(--ink);}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);}
+  .topo{position:absolute;inset:0;width:100%;height:100%;opacity:0.5;pointer-events:none;z-index:0;}
+  .hero-inner{position:relative;z-index:1;padding:96px 28px 88px;max-width:980px;margin:0 auto;}
+  .hero h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(40px,7vw,76px);
+    line-height:1.02;
+    letter-spacing:-0.03em;
+    margin:22px 0 0;
+    max-width:14ch;
+  }
+  .hero .lede{
+    margin:26px 0 0;
+    font-size:clamp(18px,2.4vw,21px);
+    max-width:58ch;
+    color:#2c2a24;
+  }
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
+  .btn{
+    font-family:var(--mono);font-size:13px;letter-spacing:0.04em;text-transform:uppercase;
+    text-decoration:none;padding:13px 22px;border-radius:2px;transition:transform .15s, background .2s, color .2s;
+    display:inline-flex;align-items:center;gap:9px;
+  }
+  .btn-solid{background:var(--teal);color:#fff;}
+  .btn-solid:hover{background:var(--teal-deep);transform:translateY(-1px);}
+  .btn-ghost{border:1px solid var(--ink);color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);transform:translateY(-1px);}
+
+  /* sections */
+  section{padding:84px 0;border-bottom:1px solid var(--line);}
+  .sec-head{margin-bottom:14px;}
+  .prose p{max-width:64ch;margin:0 0 20px;color:#2c2a24;}
+  .prose p:last-child{margin-bottom:0;}
+  h2.big{font-family:var(--display);font-weight:700;font-size:clamp(26px,4vw,38px);letter-spacing:-0.02em;line-height:1.08;margin:14px 0 28px;max-width:20ch;}
+
+  /* the work — threaded sequence */
+  .thread{position:relative;margin-top:8px;}
+  .thread::before{
+    content:"";position:absolute;left:26px;top:18px;bottom:30px;width:2px;
+    background:linear-gradient(180deg,var(--lime) 0%,var(--teal) 42%,var(--blue) 78%,var(--ink) 100%);
+  }
+  .node{position:relative;padding:0 0 40px 78px;}
+  .node:last-child{padding-bottom:0;}
+  .marker{
+    position:absolute;left:0;top:2px;width:54px;height:54px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);font-size:15px;font-weight:500;
+    border:2px solid var(--paper);z-index:1;
+  }
+  .m1{background:var(--lime);color:var(--ink);}
+  .m2{background:var(--teal);color:#fff;}
+  .m3{background:var(--blue);color:#fff;}
+  .m4{background:var(--ink);color:var(--paper);}
+  .node .tag{font-family:var(--mono);font-size:11.5px;letter-spacing:0.13em;text-transform:uppercase;color:var(--muted);}
+  .node h3{font-family:var(--display);font-weight:700;font-size:clamp(21px,3vw,27px);letter-spacing:-0.01em;margin:7px 0 4px;line-height:1.12;}
+  .node .sub{font-family:var(--accent);font-style:italic;font-size:17px;color:var(--teal-deep);margin:0 0 12px;}
+  .node p.desc{margin:0 0 14px;max-width:60ch;color:#2c2a24;font-size:17px;}
+  .node a.go{
+    font-family:var(--mono);font-size:12.5px;letter-spacing:0.05em;text-transform:uppercase;
+    text-decoration:none;color:var(--ink);border-bottom:2px solid var(--lime);padding-bottom:2px;
+    transition:color .2s,border-color .2s;display:inline-flex;align-items:center;gap:7px;
+  }
+  .node a.go:hover{color:var(--teal);border-color:var(--teal);}
+  .node a.go .arr{transition:transform .2s;}
+  .node a.go:hover .arr{transform:translateX(4px);}
+
+  /* contact */
+  .links-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:24px;}
+  .link-card{
+    display:flex;align-items:center;gap:12px;text-decoration:none;
+    border:1px solid var(--line);background:var(--panel);padding:15px 20px;border-radius:3px;
+    font-family:var(--mono);font-size:13.5px;color:var(--ink);transition:border-color .2s,transform .15s;
+  }
+  .link-card:hover{border-color:var(--teal);transform:translateY(-1px);}
+  .link-card .k{color:var(--muted);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:2px;}
+
+  footer{padding:40px 0 56px;}
+  .foot-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;align-items:baseline;}
+  .foot-inner .sig{font-family:var(--accent);font-style:italic;font-size:18px;color:var(--muted);}
+  .foot-inner .meta{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);}
+
+  :focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:2px;}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media (max-width:620px){
+    body{font-size:17px;}
+    .nav-links{display:none;}
+    .hero-inner{padding:64px 0 60px;}
+    section{padding:60px 0;}
+    .node{padding-left:64px;}
+    .thread::before{left:21px;}
+    .marker{width:44px;height:44px;font-size:13px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;transition:none;}
+    .btn,.node a.go .arr{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="mono-logo">anjali<span>.</span></div>
+    <div class="nav-links">
+      <a href="#work">The work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <svg class="topo" viewBox="0 0 980 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke="#1A8A7A" stroke-width="1" opacity="0.16">
+      <path d="M-40,90 C160,40 320,150 520,110 C720,70 860,160 1040,120"/>
+      <path d="M-40,160 C160,110 320,220 520,180 C720,140 860,230 1040,190"/>
+      <path d="M-40,235 C160,185 320,295 520,255 C720,215 860,305 1040,265"/>
+      <path d="M-40,315 C160,265 320,375 520,335 C720,295 860,385 1040,345"/>
+      <path d="M-40,400 C160,350 320,460 520,420 C720,380 860,470 1040,430"/>
+      <path d="M-40,490 C160,440 320,550 520,510 C720,470 860,560 1040,520"/>
+    </g>
+    <g fill="none" stroke="#2A5FAA" stroke-width="1" opacity="0.12">
+      <path d="M-40,125 C220,70 380,200 600,150 C820,100 900,210 1040,165"/>
+      <path d="M-40,275 C220,220 380,350 600,300 C820,250 900,360 1040,315"/>
+      <path d="M-40,440 C220,385 380,515 600,465 C820,415 900,525 1040,480"/>
+    </g>
+  </svg>
+  <div class="hero-inner">
+    <p class="eyebrow reveal">Anjali Baheti · Backend and AI engineer</p>
+    <h1 class="reveal">A map I am building in <span class="em">public.</span></h1>
+    <p class="lede reveal">I am a backend and AI engineer, about four years in. When something catches my attention, I follow it until it turns into something I can publish. What follows are four pieces of one running investigation into markets, builders, and the gap between what the data says and what people actually do.</p>
+    <div class="hero-cta reveal">
+      <a class="btn btn-solid" href="#work">See the work →</a>
+      <a class="btn btn-ghost" href="mailto:bahetianjali.10@gmail.com">Email me</a>
+    </div>
+  </div>
+</header>
+
+<section id="intro">
+  <div class="wrap prose">
+    <p class="eyebrow reveal" style="margin-bottom:18px;">Who I am</p>
+    <p class="reveal">Hi, I am Anjali. By day I am a Software Engineer II at Movius, working on backend systems, real-time communication infrastructure, and LLM integrations. I like understanding how a product fits together end to end, not only the slice I happen to own.</p>
+    <p class="reveal">By habit, I think out loud. Writing something down, in public, is how I work out what I actually believe about it. None of the pieces below are finished arguments. They are running notes, a map I am still tracing, and each one is a continuation of the last.</p>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <p class="eyebrow reveal">One investigation · four pieces</p>
+    <h2 class="big reveal">These are not scattered posts. Read in order, they are one line of thinking that keeps <span class="em">moving.</span></h2>
+
+    <div class="thread">
+      <div class="node reveal">
+        <div class="marker m1">01</div>
+        <p class="tag">The framework · May 2026</p>
+        <h3>Startup Intelligence, Vol. I</h3>
+        <p class="sub">America's Biggest Itches Nobody Is Scratching</p>
+        <p class="desc">Where it started. I borrowed a scoring idea from India's Fix My Itch, adapted it to the US market, and ranked five gaps that exist but are not solved well yet. The pattern underneath surprised me more than any single ranking did.</p>
+        <a class="go" href="/startup-intelligence/">Read Vol. I <span class="arr">→</span></a>
+      </div>
+
+      <div class="node reveal">
+        <div class="marker m2">02</div>
+        <p class="tag">The doubt · June 2026 · Interactive</p>
+        <h3>The Builder's Map, Vol. II</h3>
+        <p class="sub">Every Time I Thought I Had the Answer, the Question Moved</p>
+        <p class="desc">The framework started breaking the moment I kept using it. An interactive essay on why the same opportunity scores differently depending on who is reading it, with an eight-factor map you can re-weight yourself and watch the rankings move.</p>
+        <a class="go" href="/builders-map/">Read Vol. II <span class="arr">→</span></a>
+      </div>
+
+      <div class="node reveal">
+        <div class="marker m3">03</div>
+        <p class="tag">The tool · Runs in your browser</p>
+        <h3>Sift</h3>
+        <p class="sub">Opportunity discovery, not search</p>
+        <p class="desc">The thinking turned into something you can run. Tell Sift one line about yourself and it surfaces five opportunities matched to your background, scored on Fit, Why Now, and Reach. No signup, no resume upload, your data stays in your browser.</p>
+        <a class="go" href="/sift/">Try Sift <span class="arr">→</span></a>
+      </div>
+
+      <div class="node reveal">
+        <div class="marker m4">04</div>
+        <p class="tag">The field notes · Ongoing</p>
+        <h3>Startups I Am Watching</h3>
+        <p class="sub">A field notebook, updated as I keep looking</p>
+        <p class="desc">Where the map meets real companies. A running notebook on five B2B and AI teams whose engineering and product bets I find least obvious: Nooks, Standard Intelligence, Glimpse, Runway, and Ramp.</p>
+        <a class="go" href="/startups-i-am-watching/">Read the notebook <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap prose">
+    <p class="eyebrow reveal" style="margin-bottom:18px;">A little more</p>
+    <p class="reveal">On the engineering side, most of my work lives in backend systems, real-time voice infrastructure, and putting language models to actual use inside a product. Before Movius I was a founding engineer at an early-stage startup and worked on data consistency tooling at Amazon Go, so I have seen both the zero-to-one scramble and the scale-everything end of the spectrum.</p>
+    <p class="reveal">Away from the screen, I travel when I can (Puerto Rico was the most recent), cook vegetarian, and keep a running list of things I do not understand yet. The writing here is part of how that list gets shorter.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <p class="eyebrow reveal" style="margin-bottom:14px;">Say hello</p>
+    <h2 class="big reveal" style="margin-bottom:6px;">If something here landed, or you think I got something <span class="em">wrong.</span></h2>
+    <p class="prose reveal" style="margin-bottom:4px;">I would like to hear it. A pattern hiding in plain sight, a shift you think is about to happen, or a company I should be watching.</p>
+    <div class="links-row reveal">
+      <a class="link-card" href="mailto:bahetianjali.10@gmail.com"><span><span class="k">Email</span>bahetianjali.10@gmail.com</span></a>
+      <a class="link-card" href="https://linkedin.com/in/bahetianjali"><span><span class="k">LinkedIn</span>in/bahetianjali</span></a>
+      <a class="link-card" href="https://github.com/bahetianjali"><span><span class="k">GitHub</span>github.com/bahetianjali</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span class="sig">A map I am still tracing.</span>
+    <span class="meta">Anjali Baheti · 2026</span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+      });
+    },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){io.observe(e);});
+  })();
+</script>
+
+</body>
+</html>
