@@ -5,304 +5,323 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Anjali Baheti · A map I am building in public</title>
 <meta name="description" content="Backend and AI engineer. Four connected pieces of public work on markets, builders, and the gap between what data says and what people actually do." />
-<meta property="og:title" content="Anjali Baheti" />
-<meta property="og:description" content="A map I am building in public. Come think with me." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://anjalibaheti.com/" />
-<meta name="twitter:card" content="summary_large_image" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;0,800;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet" />
+
 <style>
-  :root{
-    --ink:#16140F;
-    --paper:#F8F5EE;
-    --panel:#FFFFFF;
-    --panel-2:#F1ECDF;
-    --muted:#6E685A;
-    --line:rgba(22,20,15,0.12);
-    --lime:#A8CC28;
-    --teal:#1A8A7A;
-    --teal-deep:#0F6E56;
-    --blue:#2A5FAA;
-    --display:"Space Grotesk",system-ui,sans-serif;
-    --accent:"Fraunces",Georgia,serif;
-    --body:"DM Sans",system-ui,sans-serif;
-    --mono:"JetBrains Mono",ui-monospace,monospace;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:var(--body);
-    font-size:18px;
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit;}
-  .wrap{max-width:980px;margin:0 auto;padding:0 28px;}
-  .eyebrow{
-    font-family:var(--mono);
-    font-size:12px;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    color:var(--muted);
-  }
-  .em{font-family:var(--accent);font-style:italic;font-weight:500;color:var(--teal);}
+  :root {
+    --bg:     #FFFFFF;
+    --ink:    #141414;
+    --muted:  #6E6E6E;
+    --faint:  #9A9A9A;
+    --card:   #F7F7F4;
+    --border: #1F1F1F;
+    --hair:   #E4E4E0;
 
-  /* nav */
-  nav{
-    position:sticky;top:0;z-index:20;
-    background:rgba(248,245,238,0.86);
-    backdrop-filter:saturate(140%) blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;max-width:980px;margin:0 auto;}
-  .mono-logo{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-0.01em;}
-  .mono-logo span{color:var(--lime);}
-  .nav-links{display:flex;gap:26px;font-family:var(--mono);font-size:12.5px;letter-spacing:0.06em;text-transform:uppercase;}
-  .nav-links a{color:var(--muted);text-decoration:none;transition:color .2s;}
-  .nav-links a:hover{color:var(--ink);}
+    --mono:  "JetBrains Mono", ui-monospace, monospace;
+    --serif: "Newsreader", Georgia, serif;
 
-  /* hero */
-  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);}
-  .topo{position:absolute;inset:0;width:100%;height:100%;opacity:0.5;pointer-events:none;z-index:0;}
-  .hero-inner{position:relative;z-index:1;padding:96px 28px 88px;max-width:980px;margin:0 auto;}
-  .hero h1{
-    font-family:var(--display);
-    font-weight:700;
-    font-size:clamp(40px,7vw,76px);
-    line-height:1.02;
-    letter-spacing:-0.03em;
-    margin:22px 0 0;
-    max-width:14ch;
+    --measure: 46rem;
   }
-  .hero .lede{
-    margin:26px 0 0;
-    font-size:clamp(18px,2.4vw,21px);
-    max-width:58ch;
-    color:#2c2a24;
-  }
-  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
-  .btn{
-    font-family:var(--mono);font-size:13px;letter-spacing:0.04em;text-transform:uppercase;
-    text-decoration:none;padding:13px 22px;border-radius:2px;transition:transform .15s, background .2s, color .2s;
-    display:inline-flex;align-items:center;gap:9px;
-  }
-  .btn-solid{background:var(--teal);color:#fff;}
-  .btn-solid:hover{background:var(--teal-deep);transform:translateY(-1px);}
-  .btn-ghost{border:1px solid var(--ink);color:var(--ink);}
-  .btn-ghost:hover{background:var(--ink);color:var(--paper);transform:translateY(-1px);}
 
-  /* sections */
-  section{padding:84px 0;border-bottom:1px solid var(--line);}
-  .sec-head{margin-bottom:14px;}
-  .prose p{max-width:64ch;margin:0 0 20px;color:#2c2a24;}
-  .prose p:last-child{margin-bottom:0;}
-  h2.big{font-family:var(--display);font-weight:700;font-size:clamp(26px,4vw,38px);letter-spacing:-0.02em;line-height:1.08;margin:14px 0 28px;max-width:20ch;}
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
-  /* the work — threaded sequence */
-  .thread{position:relative;margin-top:8px;}
-  .thread::before{
-    content:"";position:absolute;left:26px;top:18px;bottom:30px;width:2px;
-    background:linear-gradient(180deg,var(--lime) 0%,var(--teal) 42%,var(--blue) 78%,var(--ink) 100%);
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
   }
-  .node{position:relative;padding:0 0 40px 78px;}
-  .node:last-child{padding-bottom:0;}
-  .marker{
-    position:absolute;left:0;top:2px;width:54px;height:54px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    font-family:var(--mono);font-size:15px;font-weight:500;
-    border:2px solid var(--paper);z-index:1;
+
+  .wrap {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 0 1.5rem;
   }
-  .m1{background:var(--lime);color:var(--ink);}
-  .m2{background:var(--teal);color:#fff;}
-  .m3{background:var(--blue);color:#fff;}
-  .m4{background:var(--ink);color:var(--paper);}
-  .node .tag{font-family:var(--mono);font-size:11.5px;letter-spacing:0.13em;text-transform:uppercase;color:var(--muted);}
-  .node h3{font-family:var(--display);font-weight:700;font-size:clamp(21px,3vw,27px);letter-spacing:-0.01em;margin:7px 0 4px;line-height:1.12;}
-  .node .sub{font-family:var(--accent);font-style:italic;font-size:17px;color:var(--teal-deep);margin:0 0 12px;}
-  .node p.desc{margin:0 0 14px;max-width:60ch;color:#2c2a24;font-size:17px;}
-  .node a.go{
-    font-family:var(--mono);font-size:12.5px;letter-spacing:0.05em;text-transform:uppercase;
-    text-decoration:none;color:var(--ink);border-bottom:2px solid var(--lime);padding-bottom:2px;
-    transition:color .2s,border-color .2s;display:inline-flex;align-items:center;gap:7px;
+
+  a { color: inherit; }
+
+  /* arrow / nav link with animated underline */
+  .link {
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    font-weight: 500;
   }
-  .node a.go:hover{color:var(--teal);border-color:var(--teal);}
-  .node a.go .arr{transition:transform .2s;}
-  .node a.go:hover .arr{transform:translateX(4px);}
-
-  /* contact */
-  .links-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:24px;}
-  .link-card{
-    display:flex;align-items:center;gap:12px;text-decoration:none;
-    border:1px solid var(--line);background:var(--panel);padding:15px 20px;border-radius:3px;
-    font-family:var(--mono);font-size:13.5px;color:var(--ink);transition:border-color .2s,transform .15s;
+  .link::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -2px;
+    width: 100%; height: 1.5px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s cubic-bezier(.2,.7,.2,1);
   }
-  .link-card:hover{border-color:var(--teal);transform:translateY(-1px);}
-  .link-card .k{color:var(--muted);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:2px;}
+  .link:hover::after,
+  .link:focus-visible::after { transform: scaleX(1); }
 
-  footer{padding:40px 0 56px;}
-  .foot-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;align-items:baseline;}
-  .foot-inner .sig{font-family:var(--accent);font-style:italic;font-size:18px;color:var(--muted);}
-  .foot-inner .meta{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);}
-
-  :focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:2px;}
-
-  .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease;}
-  .reveal.in{opacity:1;transform:none;}
-
-  @media (max-width:620px){
-    body{font-size:17px;}
-    .nav-links{display:none;}
-    .hero-inner{padding:64px 0 60px;}
-    section{padding:60px 0;}
-    .node{padding-left:64px;}
-    .thread::before{left:21px;}
-    .marker{width:44px;height:44px;font-size:13px;}
+  :focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+    border-radius: 1px;
   }
-  @media (prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto;}
-    .reveal{opacity:1;transform:none;transition:none;}
-    .btn,.node a.go .arr{transition:none;}
+
+  /* ---------- top nav ---------- */
+  .topnav {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 2rem 0 0;
+  }
+  .topnav .me { font-weight: 800; font-size: 1.05rem; }
+  .topnav .links { display: flex; gap: 1.5rem; font-size: 0.85rem; }
+
+  /* ---------- hero ---------- */
+  .hero {
+    padding: 7rem 0 3rem;
+    animation: fade .8s ease forwards;
+  }
+  .wordmark {
+    font-weight: 800;
+    font-size: clamp(3.5rem, 13vw, 7rem);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    margin: 0 0 0.7rem;
+  }
+  .role {
+    color: var(--muted);
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    margin: 0 0 2.25rem;
+  }
+  .hero-ctas { display: flex; gap: 2rem; flex-wrap: wrap; font-size: 0.95rem; }
+
+  @keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+  /* ---------- slash divider ---------- */
+  .slashes {
+    text-align: center;
+    color: var(--faint);
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: 0.35em;
+    font-style: italic;
+    padding: 3.5rem 0;
+    user-select: none;
+  }
+
+  /* ---------- section ---------- */
+  section { padding: 1rem 0; }
+  .eyebrow {
+    color: var(--muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    margin: 0 0 1rem;
+  }
+  h2 {
+    font-weight: 800;
+    font-size: clamp(1.5rem, 4vw, 2.1rem);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin: 0 0 2rem;
+    max-width: 36rem;
+  }
+
+  /* serif body for long reading passages */
+  .prose {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    line-height: 1.65;
+  }
+  .prose p { margin: 0 0 1.3rem; }
+  .prose p:last-child { margin-bottom: 0; }
+
+  /* ---------- work cards ---------- */
+  .cards { display: flex; flex-direction: column; gap: 1.75rem; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2rem 2rem 1.75rem;
+    box-shadow: 0 6px 22px rgba(0,0,0,0.05);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.09);
+  }
+  .card-num {
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: var(--faint);
+    margin-bottom: 0.75rem;
+  }
+  .card-kicker {
+    color: var(--muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.9rem;
+  }
+  .card-title {
+    font-weight: 800;
+    font-size: 1.45rem;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.4rem;
+  }
+  .card-sub {
+    font-style: italic;
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.1rem;
+  }
+  .card-desc { margin: 0 0 1.4rem; }
+  .arrow { font-size: 0.95rem; }
+
+  /* serif prose inline links get a permanent underline so they read as links */
+  .prose a {
+    text-decoration: none;
+    border-bottom: 1px solid var(--faint);
+    transition: border-color .2s ease;
+  }
+  .prose a:hover { border-color: var(--ink); }
+
+  /* sub-heading inside the about section */
+  .subhead {
+    font-family: var(--mono);
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    margin: 3rem 0 1.25rem;
+  }
+
+  /* ---------- contact ---------- */
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    margin-top: 1.5rem;
+  }
+  .contact-links a { display: inline-flex; gap: 0.6rem; }
+  .contact-links .key { color: var(--muted); min-width: 5.5rem; }
+
+  /* ---------- footer ---------- */
+  footer {
+    border-top: 1px solid var(--hair);
+    margin-top: 4rem;
+    padding: 2rem 0 4rem;
+    color: var(--muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hero { animation: none; opacity: 1; }
+    .card { transition: none; }
+    .link::after { transition: none; }
   }
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<nav>
-  <div class="nav-inner">
-    <div class="mono-logo">anjali<span>.</span></div>
-    <div class="nav-links">
-      <a href="#work">The work</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+  <header class="hero">
+    <h1 class="wordmark">anjali.</h1>
+    <p class="role">backend and AI engineer</p>
+    <div class="hero-ctas">
+      <a class="link" href="#work">see the work →</a>
+      <a class="link" href="mailto:bahetianjali.10@gmail.com">email me →</a>
     </div>
-  </div>
-</nav>
+  </header>
 
-<header class="hero">
-  <svg class="topo" viewBox="0 0 980 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <g fill="none" stroke="#1A8A7A" stroke-width="1" opacity="0.16">
-      <path d="M-40,90 C160,40 320,150 520,110 C720,70 860,160 1040,120"/>
-      <path d="M-40,160 C160,110 320,220 520,180 C720,140 860,230 1040,190"/>
-      <path d="M-40,235 C160,185 320,295 520,255 C720,215 860,305 1040,265"/>
-      <path d="M-40,315 C160,265 320,375 520,335 C720,295 860,385 1040,345"/>
-      <path d="M-40,400 C160,350 320,460 520,420 C720,380 860,470 1040,430"/>
-      <path d="M-40,490 C160,440 320,550 520,510 C720,470 860,560 1040,520"/>
-    </g>
-    <g fill="none" stroke="#2A5FAA" stroke-width="1" opacity="0.12">
-      <path d="M-40,125 C220,70 380,200 600,150 C820,100 900,210 1040,165"/>
-      <path d="M-40,275 C220,220 380,350 600,300 C820,250 900,360 1040,315"/>
-      <path d="M-40,440 C220,385 380,515 600,465 C820,415 900,525 1040,480"/>
-    </g>
-  </svg>
-  <div class="hero-inner">
-    <p class="eyebrow reveal">Anjali Baheti · Backend and AI engineer</p>
-    <h1 class="reveal">A map I am building in <span class="em">public.</span></h1>
-    <p class="lede reveal">I am a backend and AI engineer, about four years in. When something catches my attention, I follow it until it turns into something I can publish. What follows are four pieces of one running investigation into markets, builders, and the gap between what the data says and what people actually do.</p>
-    <div class="hero-cta reveal">
-      <a class="btn btn-solid" href="#work">See the work →</a>
-      <a class="btn btn-ghost" href="mailto:bahetianjali.10@gmail.com">Email me</a>
+  <div class="slashes">/////////</div>
+
+  <!-- ============ WORK ============ -->
+  <section id="work">
+    <p class="eyebrow">one investigation · four pieces</p>
+
+    <div class="cards">
+
+      <article class="card">
+        <div class="card-num">01</div>
+        <div class="card-kicker">The framework · May 2026</div>
+        <h3 class="card-title">Startup Intelligence, Vol. I</h3>
+        <div class="card-sub">America's Biggest Itches Nobody Is Scratching</div>
+        <p class="card-desc">Where it started. I borrowed a scoring idea from India's Fix My Itch, adapted it to the US market, and ranked five gaps that exist but are not solved well yet. The pattern underneath surprised me more than any single ranking did.</p>
+        <a class="link arrow" href="https://bahetianjali.github.io/startup-intelligence/">Read Vol. I →</a>
+      </article>
+
+      <article class="card">
+        <div class="card-num">02</div>
+        <div class="card-kicker">The doubt · June 2026 · Interactive</div>
+        <h3 class="card-title">The Builder's Map, Vol. II</h3>
+        <div class="card-sub">Every Time I Thought I Had the Answer, the Question Moved</div>
+        <p class="card-desc">The framework started breaking the moment I kept using it. An interactive essay on why the same opportunity scores differently depending on who is reading it, with an eight-factor map you can re-weight yourself and watch the rankings move.</p>
+        <a class="link arrow" href="https://bahetianjali.github.io/builders-map/">Read Vol. II →</a>
+      </article>
+
+      <article class="card">
+        <div class="card-num">03</div>
+        <div class="card-kicker">The tool · Runs in your browser</div>
+        <h3 class="card-title">Sift</h3>
+        <div class="card-sub">Opportunity discovery, not search</div>
+        <p class="card-desc">The thinking turned into something you can run. Tell Sift one line about yourself and it surfaces five opportunities matched to your background, scored on Fit, Why Now, and Reach. No signup, no resume upload, your data stays in your browser.</p>
+        <a class="link arrow" href="https://bahetianjali.github.io/sift/">Try Sift →</a>
+      </article>
+
+      <article class="card">
+        <div class="card-num">04</div>
+        <div class="card-kicker">The field notes · Ongoing</div>
+        <h3 class="card-title">Startups I Am Watching</h3>
+        <div class="card-sub">A field notebook, updated as I keep looking</div>
+        <p class="card-desc">Where the map meets real companies. A running notebook on five B2B and AI teams whose engineering and product bets I find least obvious: Nooks, Standard Intelligence, Glimpse, Runway, and Ramp.</p>
+        <a class="link arrow" href="https://bahetianjali.github.io/startups-i-am-watching/">Read the notebook →</a>
+      </article>
+
     </div>
-  </div>
-</header>
+  </section>
 
-<section id="intro">
-  <div class="wrap prose">
-    <p class="eyebrow reveal" style="margin-bottom:18px;">Who I am</p>
-    <p class="reveal">Hi, I am Anjali. By day I am a Software Engineer II at Movius, working on backend systems, real-time communication infrastructure, and LLM integrations. I like understanding how a product fits together end to end, not only the slice I happen to own.</p>
-    <p class="reveal">By habit, I think out loud. Writing something down, in public, is how I work out what I actually believe about it. None of the pieces below are finished arguments. They are running notes, a map I am still tracing, and each one is a continuation of the last.</p>
-  </div>
-</section>
+  <div class="slashes">/////////</div>
 
-<section id="work">
-  <div class="wrap">
-    <p class="eyebrow reveal">One investigation · four pieces</p>
-    <h2 class="big reveal">These are not scattered posts. Read in order, they are one line of thinking that keeps <span class="em">moving.</span></h2>
+  <!-- ============ ABOUT ============ -->
+  <section id="about">
+    <p class="eyebrow">off the résumé</p>
+    <div class="prose">
+      <p>Beyond the engineering life — and all the hit-and-try that has come with it — I am a serial taker of MasterClasses. The ones that stuck: <a href="https://www.masterclass.com/classes/neil-degrasse-tyson-teaches-scientific-thinking-and-communication">Neil deGrasse Tyson</a>, <a href="https://www.masterclass.com/classes/chris-voss-teaches-the-art-of-negotiation">Chris Voss</a>, and <a href="https://www.masterclass.com/classes/sara-blakely-teaches-self-made-entrepreneurship">Sara Blakely</a>.</p>
 
-    <div class="thread">
-      <div class="node reveal">
-        <div class="marker m1">01</div>
-        <p class="tag">The framework · May 2026</p>
-        <h3>Startup Intelligence, Vol. I</h3>
-        <p class="sub">America's Biggest Itches Nobody Is Scratching</p>
-        <p class="desc">Where it started. I borrowed a scoring idea from India's Fix My Itch, adapted it to the US market, and ranked five gaps that exist but are not solved well yet. The pattern underneath surprised me more than any single ranking did.</p>
-        <a class="go" href="/startup-intelligence/">Read Vol. I <span class="arr">→</span></a>
-      </div>
+      <p>I love to solve puzzles. <a href="https://www.nytimes.com/games/wordle/index.html">Wordle</a> and <a href="https://www.merriam-webster.com/games/quordle/">Quordle</a> are my daily non-negotiables, and <a href="https://www.linkedin.com/games/tango/">Tango</a> and <a href="https://www.linkedin.com/games/zip/">Zip</a> are the two LinkedIn games I often find myself solving.</p>
 
-      <div class="node reveal">
-        <div class="marker m2">02</div>
-        <p class="tag">The doubt · June 2026 · Interactive</p>
-        <h3>The Builder's Map, Vol. II</h3>
-        <p class="sub">Every Time I Thought I Had the Answer, the Question Moved</p>
-        <p class="desc">The framework started breaking the moment I kept using it. An interactive essay on why the same opportunity scores differently depending on who is reading it, with an eight-factor map you can re-weight yourself and watch the rankings move.</p>
-        <a class="go" href="/builders-map/">Read Vol. II <span class="arr">→</span></a>
-      </div>
-
-      <div class="node reveal">
-        <div class="marker m3">03</div>
-        <p class="tag">The tool · Runs in your browser</p>
-        <h3>Sift</h3>
-        <p class="sub">Opportunity discovery, not search</p>
-        <p class="desc">The thinking turned into something you can run. Tell Sift one line about yourself and it surfaces five opportunities matched to your background, scored on Fit, Why Now, and Reach. No signup, no resume upload, your data stays in your browser.</p>
-        <a class="go" href="/sift/">Try Sift <span class="arr">→</span></a>
-      </div>
-
-      <div class="node reveal">
-        <div class="marker m4">04</div>
-        <p class="tag">The field notes · Ongoing</p>
-        <h3>Startups I Am Watching</h3>
-        <p class="sub">A field notebook, updated as I keep looking</p>
-        <p class="desc">Where the map meets real companies. A running notebook on five B2B and AI teams whose engineering and product bets I find least obvious: Nooks, Standard Intelligence, Glimpse, Runway, and Ramp.</p>
-        <a class="go" href="/startups-i-am-watching/">Read the notebook <span class="arr">→</span></a>
-      </div>
+      <p>Away from the screen I also cook — I will quietly claim that I make a genuinely excellent tiramisu. I play pickleball, hike when the weather allows, and once jumped off a twenty-foot cliff in Puerto Rico, a questionable decision given that I did not, at the time, know how to swim.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="about">
-  <div class="wrap prose">
-    <p class="eyebrow reveal" style="margin-bottom:18px;">A little more</p>
-    <p class="reveal">On the engineering side, most of my work lives in backend systems, real-time voice infrastructure, and putting language models to actual use inside a product. Before Movius I was a founding engineer at an early-stage startup and worked on data consistency tooling at Amazon Go, so I have seen both the zero-to-one scramble and the scale-everything end of the spectrum.</p>
-    <p class="reveal">Away from the screen, I travel when I can (Puerto Rico was the most recent), cook vegetarian, and keep a running list of things I do not understand yet. The writing here is part of how that list gets shorter.</p>
-  </div>
-</section>
+  <div class="slashes">/////////</div>
 
-<section id="contact">
-  <div class="wrap">
-    <p class="eyebrow reveal" style="margin-bottom:14px;">Say hello</p>
-    <h2 class="big reveal" style="margin-bottom:6px;">If something here landed, or you think I got something <span class="em">wrong.</span></h2>
-    <p class="prose reveal" style="margin-bottom:4px;">I would like to hear it. A pattern hiding in plain sight, a shift you think is about to happen, or a company I should be watching.</p>
-    <div class="links-row reveal">
-      <a class="link-card" href="mailto:bahetianjali.10@gmail.com"><span><span class="k">Email</span>bahetianjali.10@gmail.com</span></a>
-      <a class="link-card" href="https://linkedin.com/in/bahetianjali"><span><span class="k">LinkedIn</span>in/bahetianjali</span></a>
-      <a class="link-card" href="https://github.com/bahetianjali"><span><span class="k">GitHub</span>github.com/bahetianjali</span></a>
+  <!-- ============ CONTACT ============ -->
+  <section id="contact">
+    <p class="eyebrow">say hello</p>
+    <div class="contact-links">
+      <a class="link" href="mailto:bahetianjali.10@gmail.com"><span class="key">email</span> bahetianjali.10@gmail.com</a>
+      <a class="link" href="https://linkedin.com/in/bahetianjali"><span class="key">linkedin</span> in/bahetianjali</a>
+      <a class="link" href="https://github.com/bahetianjali"><span class="key">github</span> github.com/bahetianjali</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <div class="wrap foot-inner">
-    <span class="sig">A map I am still tracing.</span>
-    <span class="meta">Anjali Baheti · 2026</span>
-  </div>
-</footer>
+  <footer>
+    A map I am still tracing. Anjali Baheti · 2026
+  </footer>
 
-<script>
-  (function(){
-    var els = document.querySelectorAll('.reveal');
-    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
-      });
-    },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
-    els.forEach(function(e){io.observe(e);});
-  })();
-</script>
-
+</div>
 </body>
 </html>
